@@ -1,9 +1,10 @@
 ﻿[h1]Kagome Mod[/h1]
 
 This mod does one thing only:
-
 When you start the game, it plays the opening animation of Haunted Village Girl: The Tempting Mystery of Kago no Sato.
+
 The mod is named “Kagome”, after the game’s protagonist, "籠女（かごめ）"
+
 This is essentially an [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3550694540]InnoMedia[/url] Example Mod.
 
 It also conveniently serves as an excuse to make dumplings with vinegar dipping sauce 🥟.

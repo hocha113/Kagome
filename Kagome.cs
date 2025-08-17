@@ -124,13 +124,15 @@ namespace Kagome
         }
 
         public override void PostDrawMenu(GameTime gameTime) {
-            if (KagomeConfig.Instance.YuanShenQD) {
-                if (frame > texture2Ds.Count - 1) {
-                    DisposeTexs();//放完后释放
-                    return;
-                }
-                Main.spriteBatch.Draw(texture2Ds[frame], new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.White * sengs);
+            if (!KagomeConfig.Instance.YuanShenQD) {
+                return;
             }
+
+            if (frame > texture2Ds.Count - 1) {
+                DisposeTexs();//放完后释放
+                return;
+            }
+            Main.spriteBatch.Draw(texture2Ds[frame], new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.White * sengs);
         }
 
         public override bool? DrawMenu(GameTime gameTime) {

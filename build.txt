@@ -2,5 +2,5 @@
 modReferences = InnoMedia, InnoVault
 author = HoCha113
 homepage = https://github.com/hocha113/Kagome
-version = 1.0
+version = 1.1
 includeSource = true

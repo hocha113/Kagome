@@ -6,3 +6,5 @@
 
 这算是个 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3550694540] InnoMedia [/url] 的 Example Mod
 顺便也算是为了给醋包顿饺子找个合理的借口🥟
+
+该模组在 [url=https://github.com/hocha113/Kagome] Github [/url] 上开源

@@ -7,3 +7,5 @@ The mod is named “Kagome”, after the game’s protagonist, "籠女（かご�
 This is essentially an [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3550694540]InnoMedia[/url] Example Mod.
 
 It also conveniently serves as an excuse to make dumplings with vinegar dipping sauce 🥟.
+
+This mod is open-source on [url=https://github.com/hocha113/Kagome] Github [/url]

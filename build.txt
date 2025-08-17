@@ -2,3 +2,4 @@
 modReferences = InnoMedia, InnoVault
 author = HoCha113
 version = 1.0
+includeSource = true

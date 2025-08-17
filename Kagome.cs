@@ -4,9 +4,11 @@ using InnoVault.GameSystem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ModLoader.Config;
 using static Kagome.Kagome;
 
 namespace Kagome
@@ -18,6 +20,19 @@ namespace Kagome
         public override void Unload() => KagomeVideo.UnLoadData();
     }
 
+    internal class KagomeConfig : ModConfig
+    {
+        public static KagomeConfig Instance { get; private set; }
+
+        public override ConfigScope Mode => ConfigScope.ClientSide;
+
+        public override void OnLoaded() => Instance = this;
+
+        [BackgroundColor(45, 175, 225, 255)]
+        [DefaultValue(false)]
+        public bool YuanShenQD { get; set; }
+    }
+
     internal class KagomeVideo : MenuOverride, IUpdateAudio
     {
         private static IList<Texture2D> texture2Ds = [];
@@ -25,7 +40,6 @@ namespace Kagome
         private static int frameCount;
         private static int videoSoundID = -1;
         private static int origMusicSlotID = -1;
-        private static int style = 0;
         private static float sengs = 0;
         private const float transitionFrame = 30f;
         public static void LoadData() {
@@ -33,9 +47,7 @@ namespace Kagome
                 return;
             }
 
-            style = Main.rand.Next(2);
-
-            if (style == 1) {
+            if (KagomeConfig.Instance.YuanShenQD) {
                 Main.QueueMainThreadAction(() => {
                     using Stream video = Instance.GetFileStream("YuanShenQD.mp4", true);
                     texture2Ds = MediaUtils.GetTexturesFromVideo(video);
@@ -112,7 +124,7 @@ namespace Kagome
         }
 
         public override void PostDrawMenu(GameTime gameTime) {
-            if (style == 1) {
+            if (KagomeConfig.Instance.YuanShenQD) {
                 if (frame > texture2Ds.Count - 1) {
                     DisposeTexs();//放完后释放
                     return;
@@ -126,7 +138,7 @@ namespace Kagome
                 return base.DrawMenu(gameTime);
             }
 
-            if (style == 1) {
+            if (KagomeConfig.Instance.YuanShenQD) {
                 if (frame <= transitionFrame) {
                     sengs = frame / transitionFrame;
                 }

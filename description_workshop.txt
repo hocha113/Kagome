@@ -1,1 +1,8 @@
-This description will show up on the steam page, check out https://steamcommunity.com/comment/Guide/formattinghelp.
+﻿[h1]Kagome Mod[/h1]
+这个模组只干一件事：
+开游戏的时候，先给你放一段[strike]《廃村少女誘惑迷離的籠之鄉》[/strike]的 OP 动画
+
+模组名字叫 “Kagome”，取自游戏女主的名字 "籠女（かごめ）"
+
+这算是个 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3550694540] InnoMedia [/url] 的 Example Mod
+顺便也算是为了给醋包顿饺子找个合理的借口🥟

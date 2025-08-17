@@ -3,7 +3,7 @@
 		DisplayName: Kagome Config
 
 		YuanShenQD: {
-			Label: Activate Another Intro Animation
+			Label: Eine weitere Intro-Animation aktivieren
 			Tooltip: ""
 		}
 	}

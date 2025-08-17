@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<!-- Import tModLoader mod properties -->
+	<Import Project="..\tModLoader.targets" />
+
+	<!-- General -->
+	<PropertyGroup>
+		
+	</PropertyGroup>
+	<ItemGroup>
+	  <Reference Include="InnoMedia">
+	    <HintPath>..\InnoMedia\bin\Debug\net8.0\InnoMedia.dll</HintPath>
+	  </Reference>
+	  <Reference Include="InnoVault">
+	    <HintPath>..\InnoVault\bin\Debug\net8.0\InnoVault.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
+	<!-- References -->
+
+</Project>

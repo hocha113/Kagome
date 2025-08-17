@@ -3,10 +3,13 @@ using InnoVault;
 using InnoVault.GameSystem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
 using static Kagome.Kagome;
@@ -138,6 +141,15 @@ namespace Kagome
         public override bool? DrawMenu(GameTime gameTime) {
             if (!VaultLoad.LoadenContent || frame >= texture2Ds.Count) {
                 return base.DrawMenu(gameTime);
+            }
+
+            KeyboardState currentKeyState = Main.keyState;
+            KeyboardState previousKeyState = Main.oldKeyState;
+            if (currentKeyState.IsKeyDown(Keys.Escape) && !previousKeyState.IsKeyDown(Keys.Escape)) {
+                SoundEngine.PlaySound(SoundID.MenuClose);
+                frame = texture2Ds.Count;
+                DisposeTexs();
+                return false;
             }
 
             if (KagomeConfig.Instance.YuanShenQD) {

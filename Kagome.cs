@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -126,29 +127,24 @@ namespace Kagome
             }
         }
 
-        public override void PostDrawMenu(GameTime gameTime) {
-            if (!KagomeConfig.Instance.YuanShenQD) {
-                return;
-            }
-
-            if (frame > texture2Ds.Count - 1) {
-                DisposeTexs();//放完后释放
-                return;
-            }
-            Main.spriteBatch.Draw(texture2Ds[frame], new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.White * sengs);
-        }
-
         public override bool? DrawMenu(GameTime gameTime) {
+            KeyboardState currentKeyState = Main.keyState;
+            KeyboardState previousKeyState = Main.oldKeyState;
+            bool downKey = currentKeyState.IsKeyDown(Keys.Escape) && !previousKeyState.IsKeyDown(Keys.Escape);
+
             if (!VaultLoad.LoadenContent || frame >= texture2Ds.Count) {
+                if (downKey) {//重播
+                    frame = 0;
+                    frameCount = 0;
+                    return false;
+                }
                 return base.DrawMenu(gameTime);
             }
 
-            KeyboardState currentKeyState = Main.keyState;
-            KeyboardState previousKeyState = Main.oldKeyState;
-            if (currentKeyState.IsKeyDown(Keys.Escape) && !previousKeyState.IsKeyDown(Keys.Escape)) {
+            if (downKey) {
                 SoundEngine.PlaySound(SoundID.MenuClose);
-                frame = texture2Ds.Count;
-                DisposeTexs();
+                frame = texture2Ds.Count - 10;
+                //DisposeTexs();
                 return false;
             }
 
@@ -174,7 +170,7 @@ namespace Kagome
                     frame++;
                     frameCount = 0;
                     if (frame > texture2Ds.Count - 1) {
-                        DisposeTexs();//放完后释放
+                        //DisposeTexs();//放完后释放
                         return false;
                     }
                 }
@@ -182,6 +178,18 @@ namespace Kagome
             }
             
             return false;
+        }
+
+        public override void PostDrawMenu(GameTime gameTime) {
+            if (!KagomeConfig.Instance.YuanShenQD) {
+                return;
+            }
+
+            if (frame > texture2Ds.Count - 1) {
+                //DisposeTexs();//放完后释放
+                return;
+            }
+            Main.spriteBatch.Draw(texture2Ds[frame], new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.White * sengs);
         }
     }
 }

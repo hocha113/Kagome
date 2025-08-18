@@ -79,7 +79,6 @@ namespace Kagome
 
         public static void UnLoadData() {
             DisposeTexs();
-            texture2Ds.Clear();
             sengs = 0;
             frame = 0;
             frameCount = 0;
@@ -87,12 +86,15 @@ namespace Kagome
         }
 
         private static void DisposeTexs() {
-            foreach (var tex in texture2Ds) {
-                if (tex == null || tex.IsDisposed) {
-                    continue;
+            Main.QueueMainThreadAction(() => {
+                foreach (var tex in texture2Ds) {
+                    if (tex == null || tex.IsDisposed) {
+                        continue;
+                    }
+                    tex.Dispose();
                 }
-                tex.Dispose();
-            }
+                texture2Ds.Clear();
+            });
         }
 
         void IUpdateAudio.DecideMusic() {

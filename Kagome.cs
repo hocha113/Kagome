@@ -32,6 +32,7 @@ namespace Kagome
         public override void OnLoaded() => Instance = this;
 
         [BackgroundColor(45, 175, 225, 255)]
+        [ReloadRequired]
         [DefaultValue(false)]
         public bool YuanShenQD { get; set; }
     }
@@ -139,7 +140,7 @@ namespace Kagome
                 }
                 return base.DrawMenu(gameTime);
             }
-
+            
             if (downKey) {
                 SoundEngine.PlaySound(SoundID.MenuClose);
                 frame = texture2Ds.Count - 10;

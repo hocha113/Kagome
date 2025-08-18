@@ -7,7 +7,6 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;

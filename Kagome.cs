@@ -134,6 +134,7 @@ namespace Kagome
 
             if (!VaultLoad.LoadenContent || frame >= texture2Ds.Count) {
                 if (downKey) {//重播
+                    sengs = 0;
                     frame = 0;
                     frameCount = 0;
                     return false;
